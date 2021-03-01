@@ -123,6 +123,11 @@ export const Repositories = styled.span`
 
     }
 
+    svg{
+      margin-left: auto;
+
+    }
+
     &:hover{
       transform: translateX(10px)
 

@@ -1,6 +1,7 @@
 import React, {useState, FormEvent, useEffect} from 'react';
 import {Title, Form, Repositories, Icondiv, Error } from './styles'
 import { FiChevronRight } from 'react-icons/fi'
+import { Link } from 'react-router-dom'
 
 import api from '../../services/api'
 
@@ -57,7 +58,7 @@ const Dashboard: React.FC = () =>{
     
    try{
     const response = await api.get<Repository>(`repos/${newRepo}`);
-
+   
    const repository =  response.data;
 
    console.log(repository)
@@ -91,7 +92,7 @@ const Dashboard: React.FC = () =>{
 
       <Repositories>
         {respositories.map((resposiroty)=>(
-            <a key={resposiroty.full_name} href="teste">
+            <Link key={resposiroty.full_name} to={`/repositories/${resposiroty.full_name}`}>
             <img src={resposiroty.owner.avatar_url} alt="eduardo"/>
             <div>
               <strong>{resposiroty.full_name}</strong>
@@ -102,7 +103,7 @@ const Dashboard: React.FC = () =>{
              <FiChevronRight size={20}/>
             </Icondiv>
             
-          </a>
+          </Link>
 
 
         ))}
